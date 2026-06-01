@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my Valentine? â¤ï¸</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #fce4ec;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            text-align: center;
+            overflow: hidden;
+        }
 
+        .container {
+            padding: 20px;
+        }
+
+        h1 {
+            color: #d81b60;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            min-height: 80px;
+        }
+
+        .gif_container {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .gif_container img {
+            width: 250px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            min-height: 100px;
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #yesButton {
+            background-color: #4caf50;
+            color: white;
+            z-index: 1000;
+        }
+
+        #noButton {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-container" class="container">
+        <h1 id="question">Will you be my Valentine? â¤ï¸</h1>
+        <div class="gif_container">
+            <img id="main-gif" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2cwNWxpeGlxZmJjaDRsaHJzcHZzNHc4MXk4eWo0Ym9mbmd5dXR2ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tpVKvAabWt3G5csMkT/giphy.gif" alt="Cute Cat Pointing">
+        </div>
+        <div class="buttons">
+            <button id="yesButton" onclick="handleYes()">Yes</button>
+            <button id="noButton" onclick="handleNo()">No</button>
+        </div>
+    </div>
+
+    <script>
+        const messages = [
+            "hara w kan",
+            "yaaak",
+            "ma7chmtich",
+            "wa sf yes",
+            "ayaaay yaay",
+            "3isaaam wld l3tawiya kaytsnak",
+            "9aafrtiha",
+            "madanitkch haka",
+            "awdi yaa wdi"
+        ];
+
+        let messageIndex = 0;
+
+        function handleNo() {
+            const noButton = document.getElementById('noButton');
+            const yesButton = document.getElementById('yesButton');
+            
+            // Beddel l-message men l-list
+            noButton.textContent = messages[messageIndex];
+            
+            // Bach l-kalimat mayt3awdoch (kiy-7bess f lekhra ila sala l-list)
+            if (messageIndex < messages.length - 1) {
+                messageIndex++;
+            }
+
+            // Tekbir l-bouton "Yes"
+            const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            const newSize = currentSize * 1.5; 
+            yesButton.style.fontSize = newSize + 'px';
+            
+            const currentPaddingTop = parseFloat(window.getComputedStyle(yesButton).paddingTop);
+            const currentPaddingLeft = parseFloat(window.getComputedStyle(yesButton).paddingLeft);
+            yesButton.style.padding = (currentPaddingTop * 1.2) + 'px ' + (currentPaddingLeft * 1.2) + 'px';
+        }
+
+        function handleYes() {
+            const container = document.getElementById('main-container');
+            
+            container.innerHTML = `
+                <h1 style="color: #d81b60; font-size: 2.5rem;">Knew you would say yes! ðŸ¥°â¤ï¸</h1>
+                <div class="gif_container">
+                    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExemw5eW1iemJkcGZwbTdxa2hwYTVydWcydmtnaDV3YmZudzF6bXU0MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ytu2GUYbvhz7zShGwS/giphy.gif" alt="Happy Cat Laughing">
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
